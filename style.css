@@ -1,0 +1,118 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111; /* Dark background */
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #ff0055;
+  text-shadow: -3px -3px 0 #000, 3px 3px 0 #fff;
+  transform: rotate(-3deg);
+  font-weight: bold;
+}
+
+/* Zine Container */
+.zine-container {
+  position: relative;
+  width: 90vw;
+  height: 75vh;
+  margin: 0 auto;
+  background-color: #222;
+  border: 8px solid #fff;
+  box-shadow: 10px 10px 0px #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Images */
+.zine-image {
+  display: none;
+  width: 95%;
+  height: 80%;
+  object-fit: contain;
+  animation: punkyPop 0.5s ease-in-out;
+  filter: contrast(1.5) brightness(0.9) saturate(0.7);
+  box-shadow: -10px 10px 0px #000;
+}
+
+.zine-image.active {
+  display: block;
+}
+
+/* Caption */
+.caption {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ff0055;
+  text-shadow: -1px -1px 0 #000, 1px 1px 0 #fff;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Navigation Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ff0055;
+  text-shadow: -2px -2px 0 #000, 2px 2px 0 #fff;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+}
+
+.arrow-left {
+  left: 10px;
+  transform: rotate(-10deg);
+}
+
+.arrow-right {
+  right: 10px;
+  transform: rotate(10deg);
+}
+
+.arrow:hover {
+  color: #fff;
+}
+
+/* Grungy Texture Overlay */
+.texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/noise-lines.png');
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Animations */
+@keyframes punkyPop {
+  0% {
+    transform: scale(0.8) rotate(-2deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
