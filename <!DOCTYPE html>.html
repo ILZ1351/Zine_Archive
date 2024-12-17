@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punky Digital Zine</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #111; /* Dark background */
+      color: #fff;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 16px;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: #ff0055;
+      text-shadow: -3px -3px 0 #000, 3px 3px 0 #fff;
+      transform: rotate(-3deg);
+      font-weight: bold;
+    }
+
+    /* Zine Container */
+    .zine-container {
+      position: relative;
+      width: 90vw;
+      height: 75vh;
+      margin: 0 auto;
+      background-color: #222;
+      border: 8px solid #fff;
+      box-shadow: 10px 10px 0px #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Images */
+    .zine-image {
+      display: none;
+      width: 95%;
+      height: 80%;
+      object-fit: contain;
+      animation: punkyPop 0.5s ease-in-out;
+      filter: contrast(1.5) brightness(0.9) saturate(0.7);
+      box-shadow: -10px 10px 0px #000;
+    }
+
+    .zine-image.active {
+      display: block;
+    }
+
+    /* Caption */
+    .caption {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #ff0055;
+      text-shadow: -1px -1px 0 #000, 1px 1px 0 #fff;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+
+    /* Navigation Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 4rem;
+      font-weight: bold;
+      color: #ff0055;
+      text-shadow: -2px -2px 0 #000, 2px 2px 0 #fff;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+    }
+
+    .arrow-left {
+      left: 10px;
+      transform: rotate(-10deg);
+    }
+
+    .arrow-right {
+      right: 10px;
+      transform: rotate(10deg);
+    }
+
+    .arrow:hover {
+      color: #fff;
+    }
+
+    /* Grungy Texture Overlay */
+    .texture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/noise-lines.png');
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    /* Animations */
+    @keyframes punkyPop {
+      0% {
+        transform: scale(0.8) rotate(-2deg);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Chaos and Community in the DIY Scene</h1>
+
+  <div class="zine-container">
+    <!-- Zine Pages -->
+    <img src="image1/image1.heic" class="zine-image active" alt="Zine Page 1">
+    <img src="image2/image2.jpg" class="zine-image" alt="Zine Page 2">
+    <img src="image3.jpg" class="zine-image" alt="Zine Page 3">
+    <img src="image4/image4.jpg" class="zine-image" alt="Zine Page 4">
+    <img src="image5/image5.jpg" class="zine-image" alt="Zine Page 5">
+    <img src="image6/image6.jpg" class="zine-image" alt="Zine Page 6">
+    <img src="image7/image7.jpg" class="zine-image" alt="Zine Page 7">
+    <img src="image8/image8.jpg" class="zine-image" alt="Zine Page 8">
+    <img src="image9/image9.jpg" class="zine-image" alt="Zine Page 9">
+    <img src="image10/image10.jpg" class="zine-image" alt="Zine Page 10">
+    <img src="image11/image11.jpg" class="zine-image" alt="Zine Page 11">
+    <img src="image12/image12.jpg" class="zine-image" alt="Zine Page 12">
+    <img src="image13/image13.jpg" class="zine-image" alt="Zine Page 13">
+    <img src="image14/image14.jpg" class="zine-image" alt="Zine Page 14">
+    <img src="image15/image15.jpg" class="zine-image" alt="Zine Page 15">
+    <img src="image16/image16.jpg" class="zine-image" alt="Zine Page 16">
+    <img src="image17/image17.jpg" class="zine-image" alt="Zine Page 17">
+    <img src="image18/IMG_5161.jpg" class="zine-image" alt="Zine Page 18">
+    <img src="image19/image19.jpg" class="zine-image" alt="Zine Page 19">
+    <img src="image20/image20.jpg" class="zine-image" alt="Zine Page 20">
+    <img src="image21/image21.jpg" class="zine-image" alt="Zine Page 21">
+    <img src="image22/image22.jpg" class="zine-image" alt="Zine Page 22">
+    <img src="image23/image23.jpg" class="zine-image" alt="Zine Page 23">
+
+    <!-- Arrows -->
+    <div class="arrow arrow-left" id="prev">&larr;</div>
+    <div class="arrow arrow-right" id="next">&rarr;</div>
+
+    <!-- Grunge Texture -->
+    <div class="texture"></div>
+  </div>
+
+  <!-- Caption -->
+  <div class="caption" id="caption">Page 1: "The DIY Scene is everything to me."</div>
+
+  <script>
+    const images = document.querySelectorAll('.zine-image');
+    const caption = document.getElementById('caption');
+    let currentIndex = 0;
+
+    // Captions for each image
+    const captions = [
+      "Page 1: 'The DIY scene feels like home—grimy, loud, and filled with people who care more about the music than the mess.'",
+      "Page 2: 'Chaos at a hardcore show isn’t anger, it’s release; everyone’s throwing themselves into the moment, and somehow, it works.'",
+      "Page 3: 'You don’t need a big budget or fancy gear to make something unforgettable—just a room, a band, and people willing to show up.'",
+      "Page 4: 'DIY shows strip music back to its rawest form; no barriers, no egos—just pure sound and energy.'",
+      "Page 5: 'I’ve seen people crowd-surf through ceilings, and the best part is everyone’s laughing and helping fix it after.'",
+      "Page 6: 'In the chaos, you find connection—someone always picks you up when you fall.'",
+      "Page 7:'It’s not about perfection; it’s about presence—screaming along, drenched in sweat, part of something bigger than yourself.'",
+      "Page 8: 'These shows teach you to make the most out of nothing, like turning a broken amp into part of the noise.'",
+      "Page 9: A kid once played a full set using a plastic drum kit, and it was the most punk thing I’ve ever seen.",
+      "Page 10: The venue doesn’t matter—basements, attics, backyards; anywhere can become a stage.",
+      "Page 11: Sometimes, the best moments happen when things go wrong—like when the power cuts out, and everyone just keeps singing louder.",
+      "Page 12: A DIY show isn’t just about seeing your favorite band; it’s about being part of something that feels real, unpolished, and full of life.",
+      "Page 13: You won’t find smooth transitions or perfect sound checks, but you will find heart, passion, and a collective sense of belonging",
+      "Page 14: The first time I saw a band play in a backyard, I couldn’t believe how powerful it felt. No stage, no fancy lights, just a bunch of people in the middle of a backyard, jumping to the beat of music they loved. ",
+      "Page 15: In DIY, everyone’s a part of the story. No one is just a spectator. From the first note to the last echo, we all help shape what happens",
+      "Page 16: I stumbled into my first DIY show by chance—didn’t know what I was walking into, but I knew I’d never leave the same..",
+      "Page 17:In NYC, you're never more than a subway ride away from a DIY show that will change your life. It’s where chaos and culture collide..",
+      "Page 18: Every street corner in NYC feels like it could be home to a DIY show, and that's the magic of the city. There's always a place for something real.",
+      "Page 19: While other cities might have their niche subcultures, NYC’s DIY scene is a melting pot—pulling in influences from everywhere, constantly evolving and colliding..",
+      "Page 20: The politics of the scene aren’t always visible, but they’re there—fighting for space, for safety, for equality, and for respect."
+    
+    ];
+
+    const showImage = (index) => {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+      caption.textContent = captions[index];
+    };
+
+    const nextImage = () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    };
+
+    const prevImage = () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    };
+
+    // Arrow key controls
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    // Clickable arrows
+    document.getElementById('next').addEventListener('click', nextImage);
+    document.getElementById('prev').addEventListener('click', prevImage);
+  </script>
+</body>
+</html>
